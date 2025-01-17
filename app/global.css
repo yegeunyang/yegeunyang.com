@@ -144,7 +144,8 @@ table {
   overflow-x: auto;
   white-space: nowrap;
 
-  thead, th {
+  thead,
+  th {
     background-color: #009879;
     color: #ffffff;
     text-align: center;

@@ -6,7 +6,7 @@ export default function Page() {
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         {fullName}
       </h1>
-      <p className="mb-4">Hi, 👋. I'm Yegeun.</p>
+      <p className="mb-4">Hi, 👋. I&apos;m Yegeun.</p>
     </section>
   );
 }
