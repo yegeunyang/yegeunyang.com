@@ -143,6 +143,17 @@ table {
   max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
+
+  thead, th {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  th,
+  td {
+    padding: 8px 8px;
+  }
 }
 
 .title {
