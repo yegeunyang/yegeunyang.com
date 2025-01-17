@@ -8,7 +8,9 @@ export default function Page() {
       </h1>
       <p className="mb-4">Hi, 👋. I&apos;m Yegeun.</p>
 
-      <p className="mb-4">I'm a senior studying Computer Science and Math at UW-Madison.</p>
+      <p className="mb-4">
+        I&apos;m a senior studying Computer Science and Math at UW-Madison.
+      </p>
     </section>
   );
 }
