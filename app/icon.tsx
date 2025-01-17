@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { fullName } from "./sitemap";
 
 // Image metadata
 export const size = {
@@ -24,7 +25,7 @@ export default function Icon() {
           color: "white",
         }}
       >
-        Y
+        {fullName.charAt(0)}
       </div>
     ),
     // ImageResponse options

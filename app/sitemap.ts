@@ -3,6 +3,8 @@ import { getBlogPosts } from "app/blog/utils";
 export const fullName = "Yegeun Yang";
 export const description = "This is my personal website";
 export const baseUrl = "https://yegeunyang.com";
+export const githubURL = "https://github.com/yegeunyang";
+export const linkedinURL = "https://linkedin.com/in/yegeunyang";
 
 export default async function sitemap() {
   let blogs = getBlogPosts().map((post) => ({

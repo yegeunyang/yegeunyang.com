@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: fullName,
     description: description,
     url: baseUrl,
-    siteName: "yegeunyang.com",
+    siteName: baseUrl,
     locale: "en_US",
     type: "website",
   },
