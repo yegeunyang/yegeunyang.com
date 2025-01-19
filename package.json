@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "serve": "serve out",
     "lint": "next lint --dir app --fix",
     "format": "prettier . --write"
   },
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "eslint-config-next": "^15.1.5",
-    "prettier": "3.4.2"
+    "prettier": "3.4.2",
+    "serve": "^14.2.4"
   }
 }
