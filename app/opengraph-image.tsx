@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
 import { fullName } from "app/sitemap";
 
+export const dynamic = "force-static";
+
 export default function Image() {
   return new ImageResponse(
     (
