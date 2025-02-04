@@ -16,7 +16,7 @@ export default function Page() {
       <ul>
         <li>
           <a href="https://odin-cv-application-weld.vercel.app" className="underline">Resumé builder</a>
-          <p>A web application for creating resumés, developed with React.js.</p>
+          <p>A web application for creating resumés, developed with React.js. <br/>(Works only on a desktop)</p>
         </li>
       </ul>
     </section>
