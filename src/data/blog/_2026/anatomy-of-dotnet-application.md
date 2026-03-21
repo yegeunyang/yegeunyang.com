@@ -1,11 +1,12 @@
 ---
 title: Anatomy of a .NET Application
 pubDatetime: 2026-03-21T23:12:16.166Z
+modDatetime: 2026-03-21T23:42:25.134Z
 tags:
   - TIL (TodayILearned)
   - C#
 description:
-  Today I learned how .NET applications are structured behind the scenes, exploring the dotnet CLI, project files, top-level statements, and the inner workings of the Generic Host.
+  Today I learned how .NET applications are structured, exploring the dotnet CLI, project files, top-level statements, and the inner workings of the Generic Host.
 ---
 
 ## Table of contents
@@ -13,7 +14,7 @@ description:
 ## Introduction
 
 Creating and running a new .NET application could be as simple as clicking a few buttons in  Visual Studio but have you ever wondered what happens behind the scenes? 
-Today I learned how .NET applications are structured behind the scenes, exploring the dotnet CLI, project files, top-level statements, and the inner workings of the Generic Host.
+Today I learned how .NET applications are structured, exploring the dotnet CLI, project files, top-level statements, and the inner workings of the Generic Host.
 
 ## The `dotnet` command
 The `dotnet` command is the primary tool for creating, building, and running .NET applications. You can use it to create new projects, add packages, build your application, and run it.
@@ -50,17 +51,17 @@ dotnet add MyApp.UI/MyApp.UI.csproj reference MyApp.Application/MyApp.Applicatio
 dotnet add MyApp.UI/MyApp.UI.csproj reference MyApp.Infrastructure/MyApp.Infrastructure.csproj
 dotnet add MyApp.Tests/MyApp.Tests.csproj reference MyApp.Application/MyApp.Application.csproj
 
-# 4. Build the solution
+# 5. Build the solution
 dotnet build
 
-# 5. Run the application
+# 6. Run the application
 dotnet run --project MyApp.UI/MyApp.UI.csproj
 
-# 6. Run the tests
+# 7. Run the tests
 dotnet test
 ```
 
-A lot happens behind the scenes when you run these commands, and in the next sections, I will explain them—especially the files that are automatically created for you.
+Creating a new project with templates is a great way to get started, now let's take a closer look at how they are structured and what files are included by default.
 
 But before we dive into the details, note that there is a new feature called file-based applications, which allows you to write your code in a single file without needing to create a project.
 
@@ -151,8 +152,8 @@ app.Run();
 ```
 
 This is the Generic Host in action. It abstracts away the complex infrastructure required to manage the app lifetime (startup and shutdown) and breaks it down into three main phases:
-- The Builder Phase: Before the application is built, you configure its environment. Here you register your application's dependencies into the built-in Dependency Injection (DI) container (`builder.Services`). You also configure logging providers and load configuration data from `appsettings.json`.
-- The App Phase: Once `builder.Build()` is called, the application instance is created. Here, you configure the HTTP request pipeline.
+- The Builder Configuration Phase: Before the application is built, you configure its environment. Here you register your application's dependencies into the built-in Dependency Injection (DI) container (`builder.Services`). You also configure logging providers and load configuration data from `appsettings.json`.
+- The App Configuration Phase: Once `builder.Build()` is called, the application instance is created. Here, you configure the middleware pipelines.
 - The Run Phase: Finally, `app.Run()` starts your bootstrapped application and terminates it gracefully when the application stops or crashes.
 
 The `WebApplication.CreateBuilder(args)` returns a `WebApplicationBuilder` instance, which implements the [`IHostApplicationBuilder`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihostapplicationbuilder?view=net-10.0-pp) interface. It has the following important properties:
@@ -172,7 +173,7 @@ builder.Services.AddDbContextFactory<MyDbContext>(options =>
     options.UseSqlServer(connectionString));
 ```
 
-## Why is it generic?
+## Why is it called generic?
 But if it's called the Generic Host, why do we use `WebApplication.CreateBuilder()` instead of something like `GenericHost.CreateBuilder()`?
 
 The Generic Host is designed to be agnostic of the application type. The `WebApplication.CreateBuilder()` method is a convenient method that sets up the Generic Host with defaults that are suitable for web applications.
@@ -195,7 +196,7 @@ app.Run();
 The Generic Host is a fundamental building block in modern .NET development because it provides a standardized way to configure and run apps. By unifying these concepts under the Generic Host, Microsoft ensured that once you learn how to configure Dependency Injection, Logging, and Configuration for a web app, you know exactly how to do it for a background worker service, a Console app, or a cloud-native microservice.
 
 ## Conclusion
-Understanding the anatomy of a .NET application helps you better understand how the different pieces fit together and how to leverage the powerful, essential features of the .NET ecosystem such as the `dotnet` CLI, project files, top-level statements, and the Generic Host.
+Creating a new .NET application is easy but keep in mind that there is a lot happening behind the scenes. Understanding the anatomy of a .NET application helps you better understand how the different pieces fit together and how to leverage the powerful, essential features of the .NET ecosystem such as the `dotnet` CLI, project files, top-level statements, and the Generic Host.
 
 ## References
 - https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet
