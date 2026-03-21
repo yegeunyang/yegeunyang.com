@@ -1,6 +1,7 @@
 ---
 title: Async/Await in C#
 pubDatetime: 2026-03-17T03:15:05.412Z
+modDatetime: 2026-03-21T16:41:16.282Z
 tags:
   - TIL (TodayILearned)
   - C#
@@ -9,6 +10,8 @@ description:
 ---
 
 ## Table of contents
+
+## Introduction
 
 For a long time, I treated `async` and `await` as black-box magic spells. I knew how to use them, but I believe that to use a tool effectively, you need to understand how it works under the hood.
 Today I learned how `async` & `await` really work in C#.
