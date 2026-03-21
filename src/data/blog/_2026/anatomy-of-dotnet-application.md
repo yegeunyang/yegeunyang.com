@@ -69,7 +69,7 @@ But before we dive into the details, note that there is a new feature called fil
 
 Starting with C# 14 and .NET 10, there are two ways to structure your C# applications: file-based and project-based. In a file-based application, you can write all your code in a single file, and the compiler will automatically generate the necessary boilerplate code for you. In a project-based application, you have a more traditional structure with multiple files and folders.
 
-This is an exmple of a file-based application:
+This is an example of a file-based application:
 
 ```csharp
 Console.WriteLine("Hello, World!");
@@ -90,7 +90,7 @@ In the rest of this post, I will focus on the traditional project-based structur
 ## The `slnx` file and the `csproj` files
 When you create a new solution, you are essentially creating a container for one or more related projects. The solution file (.slnx) is a file that contains metadata.
 
-Inside that solution, each project has a .csproj file. It is an XML doucument that contains all the information MSBuild needs to build youp project including:
+Inside that solution, each project has a .csproj file. It is an XML document that contains all the information MSBuild needs to build your project including:
 - The project SDK version (e.g., Microsoft.NET.Sdk.Web for a Blazor app)
 - The target framework (e.g., .NET 10, .NET Standard 2.1)
 - External dependencies via `PackageReference` (your NuGet packages)
