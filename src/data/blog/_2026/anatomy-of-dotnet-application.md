@@ -153,7 +153,7 @@ app.Run();
 
 This is the Generic Host in action. It abstracts away the complex infrastructure required to manage the app lifetime (startup and shutdown) and breaks it down into three main phases:
 - The Builder Configuration Phase: Before the application is built, you configure its environment. Here you register your application's dependencies into the built-in Dependency Injection (DI) container (`builder.Services`). You also configure logging providers and load configuration data from `appsettings.json`.
-- The App Configuration Phase: Once `builder.Build()` is called, the application instance is created. Here, you configure the middleware pipelines.
+- The App Configuration Phase: Once `builder.Build()` is called, the application instance is created. Here, you configure the middleware pipelines. Also, your service container is locked down, and the root `IServiceProvider` instance is created, which will be used to resolve dependencies throughout the app's lifetime.
 - The Run Phase: Finally, `app.Run()` starts your bootstrapped application and terminates it gracefully when the application stops or crashes.
 
 The `WebApplication.CreateBuilder(args)` returns a `WebApplicationBuilder` instance, which implements the [`IHostApplicationBuilder`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihostapplicationbuilder?view=net-10.0-pp) interface. It has the following important properties:
