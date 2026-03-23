@@ -10,16 +10,16 @@ description:
 ---
 
 ## Note
-In Blazor Server applications, [multiple threads could be used to handle requests from the same client connection](https://blazor-university.com/components/multi-threaded-rendering/). This can cause problems when using a service that is not thread-safe, such as the `DbContext`.
+- In Blazor Server applications, [multiple threads could be used to handle requests from the same client connection](https://blazor-university.com/components/multi-threaded-rendering/). This can cause problems when using a service that is not thread-safe, such as the `DbContext`.
 
-[`IServiceCollection`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=net-10.0-pp) is a container for services.
-[`IServiceProvider`](https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider?view=net-10.0) is built from the `IServiceCollection` and is used to inject the services.
+- [`IServiceCollection`](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=net-10.0-pp) is a container for services.
+- [`IServiceProvider`](https://learn.microsoft.com/en-us/dotnet/api/system.iserviceprovider?view=net-10.0) is built from the `IServiceCollection` and is used to inject the services.
 
-There are actually 2 different `IServiceProvider` instances. One is called the **root** service provider, which is created when the application starts and is used to resolve singleton services. The other is called the **scoped** service provider, which is created for each request scope and is used to resolve scoped services. If a child provider is asked for a `Singleton` or a `Transient` services, it delegates the request to the root provider.
+- There are actually 2 different `IServiceProvider` instances. One is called the **root** service provider, which is created when the application starts and is used to resolve singleton services. The other is called the **scoped** service provider, which is created for each request scope and is used to resolve scoped services. If a child provider is asked for a `Singleton` or a `Transient` services, it delegates the request to the root provider.
 
-A scope is created with `using var scope = rootServiceProvider.CreateScope()`. You can resolve services from the scoped service provider by `scope.ServiceProvider.GetRequiredService<T>()`. Note that you must use `using var` to dispose of the scope when you are done with it.
+- A scope is created with `using var scope = rootServiceProvider.CreateScope()`. You can resolve services from the scoped service provider by `scope.ServiceProvider.GetRequiredService<T>()`. Note that you must use `using var` to dispose of the scope when you are done with it.
 
-ASP.NET Core API applications behind the scenes create a new scope for each incoming HTTP request.
+- ASP.NET Core API applications behind the scenes create a new scope for each incoming HTTP request.
 
 ## Quiz
 <details style="margin-bottom: 1rem; width: 100%;">

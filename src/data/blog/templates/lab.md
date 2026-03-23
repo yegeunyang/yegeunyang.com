@@ -11,7 +11,9 @@ description:
 ---
 
 ## Note
-Notes about the topic.
+- Bullet point 1
+- Bullet point 2
+- Bullet point 3
 
 ## Quiz
 <details style="margin-bottom: 1rem; width: 100%;">
